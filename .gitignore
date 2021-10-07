@@ -2,4 +2,8 @@ dist
 node_modules
 .env
 src/contracts
-holders.csv
+sak3.csv
+sushi-sak3.csv
+usdc-sak3.csv
+weth-sak3.csv
+winners.csv
