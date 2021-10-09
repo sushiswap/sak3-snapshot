@@ -1,7 +1,7 @@
 import fs from "fs";
 import { utils } from "ethers";
 import { BLACKLIST, SAK3_ADDRESS, USDC_SAK3, WETH_SAK3, SUSHI_SAK3, ZERO_DOT_ONE } from "./constants";
-import { fetchBalancesAndTotalSupply, fetchSak3BalanceInLP } from "./fetchers";
+import { fetchBalancesAndTotalSupply, fetchSa3BalanceDeposited, fetchSak3BalanceInLP } from "./fetchers";
 import { Balances, Entry } from "./types";
 
 const main = async () => {
@@ -13,8 +13,10 @@ const main = async () => {
     writeBalances(balancesLP1, "weth-sak3.csv");
     const balancesLP2 = await fetchSak3BalanceInLP(SUSHI_SAK3);
     writeBalances(balancesLP2, "sushi-sak3.csv");
+    const deposited = await fetchSa3BalanceDeposited(272); // USDC-SAK3 pool
+    writeBalances(deposited, "deposits.csv");
 
-    const totalBalances = mergeBalances(balances, balancesLP0, balancesLP1, balancesLP2);
+    const totalBalances = mergeBalances(balances, balancesLP0, balancesLP1, balancesLP2, deposited);
     const entries = flattenBalances(totalBalances)
         .filter(entry => entry.balance.gte(ZERO_DOT_ONE))
         .filter(entry => !BLACKLIST.includes(entry.address));
