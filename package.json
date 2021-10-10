@@ -1,11 +1,11 @@
 {
-  "name": "typescript-foundation",
+  "name": "sak3-snapshot",
   "version": "1.0.0",
-  "description": "TypeScript foundation for distributable packages",
+  "description": "SAK3 token snapshot at block 13369572",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/sushiswap/typescript-foundation.git",
-  "author": "Matthew Lilley <hello@matthewlilley.com>",
+  "repository": "https://github.com/sushiswap/sak3-snapshot.git",
+  "author": "LevX <team@levx.io>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
